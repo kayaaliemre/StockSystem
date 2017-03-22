@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FacultyWorksModelStoreContainer" CdmEntityContainer="FacultyWorksEntities">
+    <EntitySetMapping Name="Danisman">
+      <EntityTypeMapping TypeName="FacultyWorksModel.Danisman">
+        <MappingFragment StoreEntitySet="Danisman">
+          <ScalarProperty Name="danisman_id" ColumnName="danisman_id" />
+          <ScalarProperty Name="danisman_adi" ColumnName="danisman_adi" />
+          <ScalarProperty Name="danisman_email" ColumnName="danisman_email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DepocuTeslimDurumu">
+      <EntityTypeMapping TypeName="FacultyWorksModel.DepocuTeslimDurumu">
+        <MappingFragment StoreEntitySet="DepocuTeslimDurumu">
+          <ScalarProperty Name="teslim_id" ColumnName="teslim_id" />
+          <ScalarProperty Name="teslim_durumu" ColumnName="teslim_durumu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dersler">
+      <EntityTypeMapping TypeName="FacultyWorksModel.Dersler">
+        <MappingFragment StoreEntitySet="Dersler">
+          <ScalarProperty Name="ders_id" ColumnName="ders_id" />
+          <ScalarProperty Name="ders_adi" ColumnName="ders_adi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DigerOgrencilerSecilenDanismanIlıskisi">
+      <EntityTypeMapping TypeName="FacultyWorksModel.DigerOgrencilerSecilenDanismanIlıskisi">
+        <MappingFragment StoreEntitySet="DigerOgrencilerSecilenDanismanIlıskisi">
+          <ScalarProperty Name="tablo_id" ColumnName="tablo_id" />
+          <ScalarProperty Name="kullanıcı_rezervasyon_id" ColumnName="kullanıcı_rezervasyon_id" />
+          <ScalarProperty Name="danisman_adi" ColumnName="danisman_adi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DigerOgrencilerSecilenDersIlıskisi">
+      <EntityTypeMapping TypeName="FacultyWorksModel.DigerOgrencilerSecilenDersIlıskisi">
+        <MappingFragment StoreEntitySet="DigerOgrencilerSecilenDersIlıskisi">
+          <ScalarProperty Name="tablo_id" ColumnName="tablo_id" />
+          <ScalarProperty Name="kullanıcı_rezervasyon_id" ColumnName="kullanıcı_rezervasyon_id" />
+          <ScalarProperty Name="ders_kodu" ColumnName="ders_kodu" />
+          <ScalarProperty Name="ders_adi" ColumnName="ders_adi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IletisimOgrencisiSecilenDanismanIlıskisi">
+      <EntityTypeMapping TypeName="FacultyWorksModel.IletisimOgrencisiSecilenDanismanIlıskisi">
+        <MappingFragment StoreEntitySet="IletisimOgrencisiSecilenDanismanIlıskisi">
+          <ScalarProperty Name="tablo_id" ColumnName="tablo_id" />
+          <ScalarProperty Name="kullanıcı_rezervasyon_id" ColumnName="kullanıcı_rezervasyon_id" />
+          <ScalarProperty Name="kullanıcı_secilen_danisman" ColumnName="kullanıcı_secilen_danisman" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IletisimOgrencisiSecilenDersIlıskisi">
+      <EntityTypeMapping TypeName="FacultyWorksModel.IletisimOgrencisiSecilenDersIlıskisi">
+        <MappingFragment StoreEntitySet="IletisimOgrencisiSecilenDersIlıskisi">
+          <ScalarProperty Name="tablo_id" ColumnName="tablo_id" />
+          <ScalarProperty Name="kullanıcı_rezervasyon_id" ColumnName="kullanıcı_rezervasyon_id" />
+          <ScalarProperty Name="kullanıcı_secilen_ders" ColumnName="kullanıcı_secilen_ders" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoginAdmin">
+      <EntityTypeMapping TypeName="FacultyWorksModel.LoginAdmin">
+        <MappingFragment StoreEntitySet="LoginAdmin">
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="userPass" ColumnName="userPass" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="userSurname" ColumnName="userSurname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoginDean">
+      <EntityTypeMapping TypeName="FacultyWorksModel.LoginDean">
+        <MappingFragment StoreEntitySet="LoginDean">
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="userPass" ColumnName="userPass" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="userSurname" ColumnName="userSurname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoginLecturer">
+      <EntityTypeMapping TypeName="FacultyWorksModel.LoginLecturer">
+        <MappingFragment StoreEntitySet="LoginLecturer">
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="userPass" ColumnName="userPass" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="UserSurname" ColumnName="UserSurname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoginStocker">
+      <EntityTypeMapping TypeName="FacultyWorksModel.LoginStocker">
+        <MappingFragment StoreEntitySet="LoginStocker">
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="userPass" ColumnName="userPass" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="userSurname" ColumnName="userSurname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoginStudent">
+      <EntityTypeMapping TypeName="FacultyWorksModel.LoginStudent">
+        <MappingFragment StoreEntitySet="LoginStudent">
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="userPass" ColumnName="userPass" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="userSurname" ColumnName="userSurname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Malzeme">
+      <EntityTypeMapping TypeName="FacultyWorksModel.Malzeme">
+        <MappingFragment StoreEntitySet="Malzeme">
+          <ScalarProperty Name="malzeme_id" ColumnName="malzeme_id" />
+          <ScalarProperty Name="malzeme_adi" ColumnName="malzeme_adi" />
+          <ScalarProperty Name="malzeme_calisma_grubu" ColumnName="malzeme_calisma_grubu" />
+          <ScalarProperty Name="malzeme_durumu" ColumnName="malzeme_durumu" />
+          <ScalarProperty Name="malzeme_serino" ColumnName="malzeme_serino" />
+          <ScalarProperty Name="malzeme_kodu" ColumnName="malzeme_kodu" />
+          <ScalarProperty Name="malzeme_tipi" ColumnName="malzeme_tipi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MalzemeDurumu">
+      <EntityTypeMapping TypeName="FacultyWorksModel.MalzemeDurumu">
+        <MappingFragment StoreEntitySet="MalzemeDurumu">
+          <ScalarProperty Name="durum_id" ColumnName="durum_id" />
+          <ScalarProperty Name="durum_adi" ColumnName="durum_adi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MalzemeTipi">
+      <EntityTypeMapping TypeName="FacultyWorksModel.MalzemeTipi">
+        <MappingFragment StoreEntitySet="MalzemeTipi">
+          <ScalarProperty Name="tip_id" ColumnName="tip_id" />
+          <ScalarProperty Name="tip_adi" ColumnName="tip_adi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ogrenci">
+      <EntityTypeMapping TypeName="FacultyWorksModel.Ogrenci">
+        <MappingFragment StoreEntitySet="Ogrenci">
+          <ScalarProperty Name="kullanıcı_id" ColumnName="kullanıcı_id" />
+          <ScalarProperty Name="kullanıcı_adi" ColumnName="kullanıcı_adi" />
+          <ScalarProperty Name="kullanıcı_soyadi" ColumnName="kullanıcı_soyadi" />
+          <ScalarProperty Name="kullanıcı_bolumu" ColumnName="kullanıcı_bolumu" />
+          <ScalarProperty Name="kullanıcı_sifre" ColumnName="kullanıcı_sifre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OgrenciCalismaTipi">
+      <EntityTypeMapping TypeName="FacultyWorksModel.OgrenciCalismaTipi">
+        <MappingFragment StoreEntitySet="OgrenciCalismaTipi">
+          <ScalarProperty Name="calisma_id" ColumnName="calisma_id" />
+          <ScalarProperty Name="calima_adi" ColumnName="calima_adi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OgrenciCalismaTuru">
+      <EntityTypeMapping TypeName="FacultyWorksModel.OgrenciCalismaTuru">
+        <MappingFragment StoreEntitySet="OgrenciCalismaTuru">
+          <ScalarProperty Name="calisma_id" ColumnName="calisma_id" />
+          <ScalarProperty Name="calisma_turu" ColumnName="calisma_turu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OgrenciGrupİlişkisi">
+      <EntityTypeMapping TypeName="FacultyWorksModel.OgrenciGrupİlişkisi">
+        <MappingFragment StoreEntitySet="OgrenciGrupİlişkisi">
+          <ScalarProperty Name="tablo_id" ColumnName="tablo_id" />
+          <ScalarProperty Name="kullanıcı_rezervasyon_id" ColumnName="kullanıcı_rezervasyon_id" />
+          <ScalarProperty Name="ogrenci_id" ColumnName="ogrenci_id" />
+          <ScalarProperty Name="ogrenci_name" ColumnName="ogrenci_name" />
+          <ScalarProperty Name="ogrenci_surname" ColumnName="ogrenci_surname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OgrenciRezervasyonBilgileri">
+      <EntityTypeMapping TypeName="FacultyWorksModel.OgrenciRezervasyonBilgileri">
+        <MappingFragment StoreEntitySet="OgrenciRezervasyonBilgileri">
+          <ScalarProperty Name="kullanıcı_rezervasyon_id" ColumnName="kullanıcı_rezervasyon_id" />
+          <ScalarProperty Name="kullanıcı_id" ColumnName="kullanıcı_id" />
+          <ScalarProperty Name="kullanici_alis_tarihi" ColumnName="kullanici_alis_tarihi" />
+          <ScalarProperty Name="kullanici_teslim_tarihi" ColumnName="kullanici_teslim_tarihi" />
+          <ScalarProperty Name="kullanici_telefon" ColumnName="kullanici_telefon" />
+          <ScalarProperty Name="kullanici_calisma_turu" ColumnName="kullanici_calisma_turu" />
+          <ScalarProperty Name="kullanici_calisma_tipi" ColumnName="kullanici_calisma_tipi" />
+          <ScalarProperty Name="kullanıcı_note" ColumnName="kullanıcı_note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OgrenciRezervasyonDurumu">
+      <EntityTypeMapping TypeName="FacultyWorksModel.OgrenciRezervasyonDurumu">
+        <MappingFragment StoreEntitySet="OgrenciRezervasyonDurumu">
+          <ScalarProperty Name="rezervasyon_id" ColumnName="rezervasyon_id" />
+          <ScalarProperty Name="rezervasyon_durumu" ColumnName="rezervasyon_durumu" />
+          <ScalarProperty Name="rezervasyon_danisman_onay_durumu" ColumnName="rezervasyon_danisman_onay_durumu" />
+          <ScalarProperty Name="rezervasyon_dekan_onay_durumu" ColumnName="rezervasyon_dekan_onay_durumu" />
+          <ScalarProperty Name="rezervasyon_teslim_durumu" ColumnName="rezervasyon_teslim_durumu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OgrenciRezervasyonİliskisi">
+      <EntityTypeMapping TypeName="FacultyWorksModel.OgrenciRezervasyonİliskisi">
+        <MappingFragment StoreEntitySet="OgrenciRezervasyonİliskisi">
+          <ScalarProperty Name="kullanıcı_rezervasyon_id" ColumnName="kullanıcı_rezervasyon_id" />
+          <ScalarProperty Name="kullanici_id" ColumnName="kullanici_id" />
+          <ScalarProperty Name="rezervasyon_id" ColumnName="rezervasyon_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OgrenciSecilenMalzeme">
+      <EntityTypeMapping TypeName="FacultyWorksModel.OgrenciSecilenMalzeme">
+        <MappingFragment StoreEntitySet="OgrenciSecilenMalzeme">
+          <ScalarProperty Name="tablo_id" ColumnName="tablo_id" />
+          <ScalarProperty Name="kullanıcı_id" ColumnName="kullanıcı_id" />
+          <ScalarProperty Name="secilen_malzeme_id" ColumnName="secilen_malzeme_id" />
+          <ScalarProperty Name="kullanıcı_rezervasyon_id" ColumnName="kullanıcı_rezervasyon_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RezervasyonDanismanOnayDurumu">
+      <EntityTypeMapping TypeName="FacultyWorksModel.RezervasyonDanismanOnayDurumu">
+        <MappingFragment StoreEntitySet="RezervasyonDanismanOnayDurumu">
+          <ScalarProperty Name="onay_id" ColumnName="onay_id" />
+          <ScalarProperty Name="onay_durumu" ColumnName="onay_durumu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RezervasyonDekanOnayDurumu">
+      <EntityTypeMapping TypeName="FacultyWorksModel.RezervasyonDekanOnayDurumu">
+        <MappingFragment StoreEntitySet="RezervasyonDekanOnayDurumu">
+          <ScalarProperty Name="onay_id" ColumnName="onay_id" />
+          <ScalarProperty Name="onay_durumu" ColumnName="onay_durumu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="FacultyWorksModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="FacultyWorksModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="FacultyWorksModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="FacultyWorksModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="FacultyWorksModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FacultyWorksModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="FacultyWorksModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FacultyWorksModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="FacultyWorksModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="FacultyWorksModel.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>

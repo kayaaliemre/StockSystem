@@ -1,0 +1,656 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FacultyWorksModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Danisman">
+    <Key>
+      <PropertyRef Name="danisman_id" />
+    </Key>
+    <Property Name="danisman_id" Type="Int32" Nullable="false" />
+    <Property Name="danisman_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="danisman_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="IletisimOgrencisiSecilenDanismanIlıskisi" Relationship="Self.FK_IletisimOgrencisiSecilenDanismanIlıskisi_Danisman" FromRole="Danisman" ToRole="IletisimOgrencisiSecilenDanismanIlıskisi" />
+  </EntityType>
+  <EntityType Name="DepocuTeslimDurumu">
+    <Key>
+      <PropertyRef Name="teslim_id" />
+    </Key>
+    <Property Name="teslim_id" Type="Int32" Nullable="false" />
+    <Property Name="teslim_durumu" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="OgrenciRezervasyonDurumu" Relationship="Self.FK_OgrenciRezervasyonDurumu_DepocuTeslimDurumu" FromRole="DepocuTeslimDurumu" ToRole="OgrenciRezervasyonDurumu" />
+  </EntityType>
+  <EntityType Name="Dersler">
+    <Key>
+      <PropertyRef Name="ders_id" />
+    </Key>
+    <Property Name="ders_id" Type="Int32" Nullable="false" />
+    <Property Name="ders_adi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="IletisimOgrencisiSecilenDersIlıskisi" Relationship="Self.FK_IletisimOgrencisiSecilenDersIlıskisi_Dersler" FromRole="Dersler" ToRole="IletisimOgrencisiSecilenDersIlıskisi" />
+  </EntityType>
+  <EntityType Name="DigerOgrencilerSecilenDanismanIlıskisi">
+    <Key>
+      <PropertyRef Name="tablo_id" />
+    </Key>
+    <Property Name="tablo_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kullanıcı_rezervasyon_id" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="danisman_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="OgrenciRezervasyonBilgileri" Relationship="Self.FK_DigerOgrencilerSecilenDanismanIlıskisi_OgrenciRezervasyonBilgileri" FromRole="DigerOgrencilerSecilenDanismanIlıskisi" ToRole="OgrenciRezervasyonBilgileri" />
+  </EntityType>
+  <EntityType Name="DigerOgrencilerSecilenDersIlıskisi">
+    <Key>
+      <PropertyRef Name="tablo_id" />
+    </Key>
+    <Property Name="tablo_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kullanıcı_rezervasyon_id" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ders_kodu" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ders_adi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="OgrenciRezervasyonBilgileri" Relationship="Self.FK_DigerOgrencilerSecilenDersIlıskisi_OgrenciRezervasyonBilgileri" FromRole="DigerOgrencilerSecilenDersIlıskisi" ToRole="OgrenciRezervasyonBilgileri" />
+  </EntityType>
+  <EntityType Name="IletisimOgrencisiSecilenDanismanIlıskisi">
+    <Key>
+      <PropertyRef Name="tablo_id" />
+    </Key>
+    <Property Name="tablo_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kullanıcı_rezervasyon_id" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="kullanıcı_secilen_danisman" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Danisman" Relationship="Self.FK_IletisimOgrencisiSecilenDanismanIlıskisi_Danisman" FromRole="IletisimOgrencisiSecilenDanismanIlıskisi" ToRole="Danisman" />
+    <NavigationProperty Name="OgrenciRezervasyonBilgileri" Relationship="Self.FK_IletisimOgrencisiSecilenDanismanIlıskisi_OgrenciRezervasyonBilgileri" FromRole="IletisimOgrencisiSecilenDanismanIlıskisi" ToRole="OgrenciRezervasyonBilgileri" />
+  </EntityType>
+  <EntityType Name="IletisimOgrencisiSecilenDersIlıskisi">
+    <Key>
+      <PropertyRef Name="tablo_id" />
+    </Key>
+    <Property Name="tablo_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kullanıcı_rezervasyon_id" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="kullanıcı_secilen_ders" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Dersler" Relationship="Self.FK_IletisimOgrencisiSecilenDersIlıskisi_Dersler" FromRole="IletisimOgrencisiSecilenDersIlıskisi" ToRole="Dersler" />
+    <NavigationProperty Name="OgrenciRezervasyonBilgileri" Relationship="Self.FK_IletisimOgrencisiSecilenDersIlıskisi_OgrenciRezervasyonBilgileri" FromRole="IletisimOgrencisiSecilenDersIlıskisi" ToRole="OgrenciRezervasyonBilgileri" />
+  </EntityType>
+  <EntityType Name="LoginAdmin">
+    <Key>
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Name="userId" Type="Int32" Nullable="false" />
+    <Property Name="userPass" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="userName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="userSurname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LoginDean">
+    <Key>
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Name="userId" Type="Int32" Nullable="false" />
+    <Property Name="userPass" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="userName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="userSurname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LoginLecturer">
+    <Key>
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Name="userId" Type="Int32" Nullable="false" />
+    <Property Name="userPass" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="userName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserSurname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LoginStocker">
+    <Key>
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Name="userId" Type="Int32" Nullable="false" />
+    <Property Name="userPass" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="userName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="userSurname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LoginStudent">
+    <Key>
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Name="userId" Type="Int32" Nullable="false" />
+    <Property Name="userPass" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="userName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="userSurname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Malzeme">
+    <Key>
+      <PropertyRef Name="malzeme_id" />
+    </Key>
+    <Property Name="malzeme_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="malzeme_adi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="malzeme_calisma_grubu" Type="Int32" />
+    <Property Name="malzeme_durumu" Type="Int32" Nullable="false" />
+    <Property Name="malzeme_serino" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="malzeme_kodu" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="malzeme_tipi" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="MalzemeDurumu" Relationship="Self.FK_Malzeme_MalzemeDurumu" FromRole="Malzeme" ToRole="MalzemeDurumu" />
+    <NavigationProperty Name="MalzemeTipi" Relationship="Self.FK_Malzeme_MalzemeTipi" FromRole="Malzeme" ToRole="MalzemeTipi" />
+    <NavigationProperty Name="OgrenciCalismaTuru" Relationship="Self.FK_Malzeme_OgrenciCalismaTuru" FromRole="Malzeme" ToRole="OgrenciCalismaTuru" />
+    <NavigationProperty Name="OgrenciSecilenMalzeme" Relationship="Self.FK_OgrenciSecilenMalzeme_Malzeme" FromRole="Malzeme" ToRole="OgrenciSecilenMalzeme" />
+  </EntityType>
+  <EntityType Name="MalzemeDurumu">
+    <Key>
+      <PropertyRef Name="durum_id" />
+    </Key>
+    <Property Name="durum_id" Type="Int32" Nullable="false" />
+    <Property Name="durum_adi" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Malzeme" Relationship="Self.FK_Malzeme_MalzemeDurumu" FromRole="MalzemeDurumu" ToRole="Malzeme" />
+  </EntityType>
+  <EntityType Name="MalzemeTipi">
+    <Key>
+      <PropertyRef Name="tip_id" />
+    </Key>
+    <Property Name="tip_id" Type="Int32" Nullable="false" />
+    <Property Name="tip_adi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Malzeme" Relationship="Self.FK_Malzeme_MalzemeTipi" FromRole="MalzemeTipi" ToRole="Malzeme" />
+  </EntityType>
+  <EntityType Name="Ogrenci">
+    <Key>
+      <PropertyRef Name="kullanıcı_id" />
+    </Key>
+    <Property Name="kullanıcı_id" Type="Int32" Nullable="false" />
+    <Property Name="kullanıcı_adi" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="kullanıcı_soyadi" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="kullanıcı_bolumu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="kullanıcı_sifre" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="OgrenciSecilenMalzeme" Relationship="Self.FK_OgrenciSecilenMalzeme_Ogrenci" FromRole="Ogrenci" ToRole="OgrenciSecilenMalzeme" />
+  </EntityType>
+  <EntityType Name="OgrenciCalismaTipi">
+    <Key>
+      <PropertyRef Name="calisma_id" />
+    </Key>
+    <Property Name="calisma_id" Type="Int32" Nullable="false" />
+    <Property Name="calima_adi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="OgrenciRezervasyonBilgileri" Relationship="Self.FK_OgrenciRezervasyonBilgileri_OgrenciCalismaTipi" FromRole="OgrenciCalismaTipi" ToRole="OgrenciRezervasyonBilgileri" />
+  </EntityType>
+  <EntityType Name="OgrenciCalismaTuru">
+    <Key>
+      <PropertyRef Name="calisma_id" />
+    </Key>
+    <Property Name="calisma_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="calisma_turu" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Malzeme" Relationship="Self.FK_Malzeme_OgrenciCalismaTuru" FromRole="OgrenciCalismaTuru" ToRole="Malzeme" />
+    <NavigationProperty Name="OgrenciRezervasyonBilgileri" Relationship="Self.FK_OgrenciRezervasyonBilgileri_OgrenciCalismaTuru" FromRole="OgrenciCalismaTuru" ToRole="OgrenciRezervasyonBilgileri" />
+  </EntityType>
+  <EntityType Name="OgrenciGrupİlişkisi">
+    <Key>
+      <PropertyRef Name="tablo_id" />
+    </Key>
+    <Property Name="tablo_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kullanıcı_rezervasyon_id" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ogrenci_id" Type="Int32" Nullable="false" />
+    <Property Name="ogrenci_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ogrenci_surname" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="OgrenciRezervasyonBilgileri" Relationship="Self.FK_OgrenciGrupİlişkisi_OgrenciRezervasyonBilgileri" FromRole="OgrenciGrupİlişkisi" ToRole="OgrenciRezervasyonBilgileri" />
+  </EntityType>
+  <EntityType Name="OgrenciRezervasyonBilgileri">
+    <Key>
+      <PropertyRef Name="kullanıcı_rezervasyon_id" />
+    </Key>
+    <Property Name="kullanıcı_rezervasyon_id" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="kullanıcı_id" Type="Int32" Nullable="false" />
+    <Property Name="kullanici_alis_tarihi" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="kullanici_teslim_tarihi" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="kullanici_telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="kullanici_calisma_turu" Type="Int32" Nullable="false" />
+    <Property Name="kullanici_calisma_tipi" Type="Int32" Nullable="false" />
+    <Property Name="kullanıcı_note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DigerOgrencilerSecilenDanismanIlıskisi" Relationship="Self.FK_DigerOgrencilerSecilenDanismanIlıskisi_OgrenciRezervasyonBilgileri" FromRole="OgrenciRezervasyonBilgileri" ToRole="DigerOgrencilerSecilenDanismanIlıskisi" />
+    <NavigationProperty Name="DigerOgrencilerSecilenDersIlıskisi" Relationship="Self.FK_DigerOgrencilerSecilenDersIlıskisi_OgrenciRezervasyonBilgileri" FromRole="OgrenciRezervasyonBilgileri" ToRole="DigerOgrencilerSecilenDersIlıskisi" />
+    <NavigationProperty Name="IletisimOgrencisiSecilenDanismanIlıskisi" Relationship="Self.FK_IletisimOgrencisiSecilenDanismanIlıskisi_OgrenciRezervasyonBilgileri" FromRole="OgrenciRezervasyonBilgileri" ToRole="IletisimOgrencisiSecilenDanismanIlıskisi" />
+    <NavigationProperty Name="IletisimOgrencisiSecilenDersIlıskisi" Relationship="Self.FK_IletisimOgrencisiSecilenDersIlıskisi_OgrenciRezervasyonBilgileri" FromRole="OgrenciRezervasyonBilgileri" ToRole="IletisimOgrencisiSecilenDersIlıskisi" />
+    <NavigationProperty Name="OgrenciCalismaTipi" Relationship="Self.FK_OgrenciRezervasyonBilgileri_OgrenciCalismaTipi" FromRole="OgrenciRezervasyonBilgileri" ToRole="OgrenciCalismaTipi" />
+    <NavigationProperty Name="OgrenciCalismaTuru" Relationship="Self.FK_OgrenciRezervasyonBilgileri_OgrenciCalismaTuru" FromRole="OgrenciRezervasyonBilgileri" ToRole="OgrenciCalismaTuru" />
+    <NavigationProperty Name="OgrenciGrupİlişkisi" Relationship="Self.FK_OgrenciGrupİlişkisi_OgrenciRezervasyonBilgileri" FromRole="OgrenciRezervasyonBilgileri" ToRole="OgrenciGrupİlişkisi" />
+    <NavigationProperty Name="OgrenciRezervasyonİliskisi" Relationship="Self.FK_OgrenciRezervasyonİliskisi_OgrenciRezervasyonBilgileri" FromRole="OgrenciRezervasyonBilgileri" ToRole="OgrenciRezervasyonİliskisi" />
+    <NavigationProperty Name="OgrenciSecilenMalzeme" Relationship="Self.FK_OgrenciSecilenMalzeme_OgrenciRezervasyonBilgileri" FromRole="OgrenciRezervasyonBilgileri" ToRole="OgrenciSecilenMalzeme" />
+  </EntityType>
+  <EntityType Name="OgrenciRezervasyonDurumu">
+    <Key>
+      <PropertyRef Name="rezervasyon_id" />
+    </Key>
+    <Property Name="rezervasyon_id" Type="Int32" Nullable="false" />
+    <Property Name="rezervasyon_durumu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="rezervasyon_danisman_onay_durumu" Type="Int32" Nullable="false" />
+    <Property Name="rezervasyon_dekan_onay_durumu" Type="Int32" />
+    <Property Name="rezervasyon_teslim_durumu" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="DepocuTeslimDurumu" Relationship="Self.FK_OgrenciRezervasyonDurumu_DepocuTeslimDurumu" FromRole="OgrenciRezervasyonDurumu" ToRole="DepocuTeslimDurumu" />
+    <NavigationProperty Name="RezervasyonDanismanOnayDurumu" Relationship="Self.FK_OgrenciRezervasyonDurumu_RezervasyonDanismanOnayDurumu" FromRole="OgrenciRezervasyonDurumu" ToRole="RezervasyonDanismanOnayDurumu" />
+    <NavigationProperty Name="RezervasyonDekanOnayDurumu" Relationship="Self.FK_OgrenciRezervasyonDurumu_RezervasyonDekanOnayDurumu" FromRole="OgrenciRezervasyonDurumu" ToRole="RezervasyonDekanOnayDurumu" />
+    <NavigationProperty Name="OgrenciRezervasyonİliskisi" Relationship="Self.FK_OgrenciRezervasyonİliskisi_OgrenciRezervasyonDurumu" FromRole="OgrenciRezervasyonDurumu" ToRole="OgrenciRezervasyonİliskisi" />
+  </EntityType>
+  <EntityType Name="OgrenciRezervasyonİliskisi">
+    <Key>
+      <PropertyRef Name="kullanıcı_rezervasyon_id" />
+    </Key>
+    <Property Name="kullanıcı_rezervasyon_id" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="kullanici_id" Type="Int32" Nullable="false" />
+    <Property Name="rezervasyon_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="OgrenciRezervasyonBilgileri" Relationship="Self.FK_OgrenciRezervasyonİliskisi_OgrenciRezervasyonBilgileri" FromRole="OgrenciRezervasyonİliskisi" ToRole="OgrenciRezervasyonBilgileri" />
+    <NavigationProperty Name="OgrenciRezervasyonDurumu" Relationship="Self.FK_OgrenciRezervasyonİliskisi_OgrenciRezervasyonDurumu" FromRole="OgrenciRezervasyonİliskisi" ToRole="OgrenciRezervasyonDurumu" />
+  </EntityType>
+  <EntityType Name="OgrenciSecilenMalzeme">
+    <Key>
+      <PropertyRef Name="tablo_id" />
+    </Key>
+    <Property Name="tablo_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kullanıcı_id" Type="Int32" Nullable="false" />
+    <Property Name="secilen_malzeme_id" Type="Int32" Nullable="false" />
+    <Property Name="kullanıcı_rezervasyon_id" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Malzeme" Relationship="Self.FK_OgrenciSecilenMalzeme_Malzeme" FromRole="OgrenciSecilenMalzeme" ToRole="Malzeme" />
+    <NavigationProperty Name="Ogrenci" Relationship="Self.FK_OgrenciSecilenMalzeme_Ogrenci" FromRole="OgrenciSecilenMalzeme" ToRole="Ogrenci" />
+    <NavigationProperty Name="OgrenciRezervasyonBilgileri" Relationship="Self.FK_OgrenciSecilenMalzeme_OgrenciRezervasyonBilgileri" FromRole="OgrenciSecilenMalzeme" ToRole="OgrenciRezervasyonBilgileri" />
+  </EntityType>
+  <EntityType Name="RezervasyonDanismanOnayDurumu">
+    <Key>
+      <PropertyRef Name="onay_id" />
+    </Key>
+    <Property Name="onay_id" Type="Int32" Nullable="false" />
+    <Property Name="onay_durumu" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="OgrenciRezervasyonDurumu" Relationship="Self.FK_OgrenciRezervasyonDurumu_RezervasyonDanismanOnayDurumu" FromRole="RezervasyonDanismanOnayDurumu" ToRole="OgrenciRezervasyonDurumu" />
+  </EntityType>
+  <EntityType Name="RezervasyonDekanOnayDurumu">
+    <Key>
+      <PropertyRef Name="onay_id" />
+    </Key>
+    <Property Name="onay_id" Type="Int32" Nullable="false" />
+    <Property Name="onay_durumu" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="OgrenciRezervasyonDurumu" Relationship="Self.FK_OgrenciRezervasyonDurumu_RezervasyonDekanOnayDurumu" FromRole="RezervasyonDekanOnayDurumu" ToRole="OgrenciRezervasyonDurumu" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_IletisimOgrencisiSecilenDanismanIlıskisi_Danisman">
+    <End Role="Danisman" Type="Self.Danisman" Multiplicity="1" />
+    <End Role="IletisimOgrencisiSecilenDanismanIlıskisi" Type="Self.IletisimOgrencisiSecilenDanismanIlıskisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Danisman">
+        <PropertyRef Name="danisman_id" />
+      </Principal>
+      <Dependent Role="IletisimOgrencisiSecilenDanismanIlıskisi">
+        <PropertyRef Name="kullanıcı_secilen_danisman" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OgrenciRezervasyonDurumu_DepocuTeslimDurumu">
+    <End Role="DepocuTeslimDurumu" Type="Self.DepocuTeslimDurumu" Multiplicity="1" />
+    <End Role="OgrenciRezervasyonDurumu" Type="Self.OgrenciRezervasyonDurumu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DepocuTeslimDurumu">
+        <PropertyRef Name="teslim_id" />
+      </Principal>
+      <Dependent Role="OgrenciRezervasyonDurumu">
+        <PropertyRef Name="rezervasyon_teslim_durumu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IletisimOgrencisiSecilenDersIlıskisi_Dersler">
+    <End Role="Dersler" Type="Self.Dersler" Multiplicity="1" />
+    <End Role="IletisimOgrencisiSecilenDersIlıskisi" Type="Self.IletisimOgrencisiSecilenDersIlıskisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dersler">
+        <PropertyRef Name="ders_id" />
+      </Principal>
+      <Dependent Role="IletisimOgrencisiSecilenDersIlıskisi">
+        <PropertyRef Name="kullanıcı_secilen_ders" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DigerOgrencilerSecilenDanismanIlıskisi_OgrenciRezervasyonBilgileri">
+    <End Role="OgrenciRezervasyonBilgileri" Type="Self.OgrenciRezervasyonBilgileri" Multiplicity="1" />
+    <End Role="DigerOgrencilerSecilenDanismanIlıskisi" Type="Self.DigerOgrencilerSecilenDanismanIlıskisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OgrenciRezervasyonBilgileri">
+        <PropertyRef Name="kullanıcı_rezervasyon_id" />
+      </Principal>
+      <Dependent Role="DigerOgrencilerSecilenDanismanIlıskisi">
+        <PropertyRef Name="kullanıcı_rezervasyon_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DigerOgrencilerSecilenDersIlıskisi_OgrenciRezervasyonBilgileri">
+    <End Role="OgrenciRezervasyonBilgileri" Type="Self.OgrenciRezervasyonBilgileri" Multiplicity="1" />
+    <End Role="DigerOgrencilerSecilenDersIlıskisi" Type="Self.DigerOgrencilerSecilenDersIlıskisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OgrenciRezervasyonBilgileri">
+        <PropertyRef Name="kullanıcı_rezervasyon_id" />
+      </Principal>
+      <Dependent Role="DigerOgrencilerSecilenDersIlıskisi">
+        <PropertyRef Name="kullanıcı_rezervasyon_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IletisimOgrencisiSecilenDanismanIlıskisi_OgrenciRezervasyonBilgileri">
+    <End Role="OgrenciRezervasyonBilgileri" Type="Self.OgrenciRezervasyonBilgileri" Multiplicity="1" />
+    <End Role="IletisimOgrencisiSecilenDanismanIlıskisi" Type="Self.IletisimOgrencisiSecilenDanismanIlıskisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OgrenciRezervasyonBilgileri">
+        <PropertyRef Name="kullanıcı_rezervasyon_id" />
+      </Principal>
+      <Dependent Role="IletisimOgrencisiSecilenDanismanIlıskisi">
+        <PropertyRef Name="kullanıcı_rezervasyon_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IletisimOgrencisiSecilenDersIlıskisi_OgrenciRezervasyonBilgileri">
+    <End Role="OgrenciRezervasyonBilgileri" Type="Self.OgrenciRezervasyonBilgileri" Multiplicity="1" />
+    <End Role="IletisimOgrencisiSecilenDersIlıskisi" Type="Self.IletisimOgrencisiSecilenDersIlıskisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OgrenciRezervasyonBilgileri">
+        <PropertyRef Name="kullanıcı_rezervasyon_id" />
+      </Principal>
+      <Dependent Role="IletisimOgrencisiSecilenDersIlıskisi">
+        <PropertyRef Name="kullanıcı_rezervasyon_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Malzeme_MalzemeDurumu">
+    <End Role="MalzemeDurumu" Type="Self.MalzemeDurumu" Multiplicity="1" />
+    <End Role="Malzeme" Type="Self.Malzeme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MalzemeDurumu">
+        <PropertyRef Name="durum_id" />
+      </Principal>
+      <Dependent Role="Malzeme">
+        <PropertyRef Name="malzeme_durumu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Malzeme_MalzemeTipi">
+    <End Role="MalzemeTipi" Type="Self.MalzemeTipi" Multiplicity="1" />
+    <End Role="Malzeme" Type="Self.Malzeme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MalzemeTipi">
+        <PropertyRef Name="tip_id" />
+      </Principal>
+      <Dependent Role="Malzeme">
+        <PropertyRef Name="malzeme_tipi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Malzeme_OgrenciCalismaTuru">
+    <End Role="OgrenciCalismaTuru" Type="Self.OgrenciCalismaTuru" Multiplicity="0..1" />
+    <End Role="Malzeme" Type="Self.Malzeme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OgrenciCalismaTuru">
+        <PropertyRef Name="calisma_id" />
+      </Principal>
+      <Dependent Role="Malzeme">
+        <PropertyRef Name="malzeme_calisma_grubu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OgrenciSecilenMalzeme_Malzeme">
+    <End Role="Malzeme" Type="Self.Malzeme" Multiplicity="1" />
+    <End Role="OgrenciSecilenMalzeme" Type="Self.OgrenciSecilenMalzeme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Malzeme">
+        <PropertyRef Name="malzeme_id" />
+      </Principal>
+      <Dependent Role="OgrenciSecilenMalzeme">
+        <PropertyRef Name="secilen_malzeme_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OgrenciSecilenMalzeme_Ogrenci">
+    <End Role="Ogrenci" Type="Self.Ogrenci" Multiplicity="1" />
+    <End Role="OgrenciSecilenMalzeme" Type="Self.OgrenciSecilenMalzeme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ogrenci">
+        <PropertyRef Name="kullanıcı_id" />
+      </Principal>
+      <Dependent Role="OgrenciSecilenMalzeme">
+        <PropertyRef Name="kullanıcı_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OgrenciRezervasyonBilgileri_OgrenciCalismaTipi">
+    <End Role="OgrenciCalismaTipi" Type="Self.OgrenciCalismaTipi" Multiplicity="1" />
+    <End Role="OgrenciRezervasyonBilgileri" Type="Self.OgrenciRezervasyonBilgileri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OgrenciCalismaTipi">
+        <PropertyRef Name="calisma_id" />
+      </Principal>
+      <Dependent Role="OgrenciRezervasyonBilgileri">
+        <PropertyRef Name="kullanici_calisma_tipi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OgrenciRezervasyonBilgileri_OgrenciCalismaTuru">
+    <End Role="OgrenciCalismaTuru" Type="Self.OgrenciCalismaTuru" Multiplicity="1" />
+    <End Role="OgrenciRezervasyonBilgileri" Type="Self.OgrenciRezervasyonBilgileri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OgrenciCalismaTuru">
+        <PropertyRef Name="calisma_id" />
+      </Principal>
+      <Dependent Role="OgrenciRezervasyonBilgileri">
+        <PropertyRef Name="kullanici_calisma_turu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OgrenciGrupİlişkisi_OgrenciRezervasyonBilgileri">
+    <End Role="OgrenciRezervasyonBilgileri" Type="Self.OgrenciRezervasyonBilgileri" Multiplicity="1" />
+    <End Role="OgrenciGrupİlişkisi" Type="Self.OgrenciGrupİlişkisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OgrenciRezervasyonBilgileri">
+        <PropertyRef Name="kullanıcı_rezervasyon_id" />
+      </Principal>
+      <Dependent Role="OgrenciGrupİlişkisi">
+        <PropertyRef Name="kullanıcı_rezervasyon_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OgrenciRezervasyonİliskisi_OgrenciRezervasyonBilgileri">
+    <End Role="OgrenciRezervasyonBilgileri" Type="Self.OgrenciRezervasyonBilgileri" Multiplicity="1" />
+    <End Role="OgrenciRezervasyonİliskisi" Type="Self.OgrenciRezervasyonİliskisi" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="OgrenciRezervasyonBilgileri">
+        <PropertyRef Name="kullanıcı_rezervasyon_id" />
+      </Principal>
+      <Dependent Role="OgrenciRezervasyonİliskisi">
+        <PropertyRef Name="kullanıcı_rezervasyon_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OgrenciSecilenMalzeme_OgrenciRezervasyonBilgileri">
+    <End Role="OgrenciRezervasyonBilgileri" Type="Self.OgrenciRezervasyonBilgileri" Multiplicity="1" />
+    <End Role="OgrenciSecilenMalzeme" Type="Self.OgrenciSecilenMalzeme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OgrenciRezervasyonBilgileri">
+        <PropertyRef Name="kullanıcı_rezervasyon_id" />
+      </Principal>
+      <Dependent Role="OgrenciSecilenMalzeme">
+        <PropertyRef Name="kullanıcı_rezervasyon_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OgrenciRezervasyonDurumu_RezervasyonDanismanOnayDurumu">
+    <End Role="RezervasyonDanismanOnayDurumu" Type="Self.RezervasyonDanismanOnayDurumu" Multiplicity="1" />
+    <End Role="OgrenciRezervasyonDurumu" Type="Self.OgrenciRezervasyonDurumu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RezervasyonDanismanOnayDurumu">
+        <PropertyRef Name="onay_id" />
+      </Principal>
+      <Dependent Role="OgrenciRezervasyonDurumu">
+        <PropertyRef Name="rezervasyon_danisman_onay_durumu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OgrenciRezervasyonDurumu_RezervasyonDekanOnayDurumu">
+    <End Role="RezervasyonDekanOnayDurumu" Type="Self.RezervasyonDekanOnayDurumu" Multiplicity="0..1" />
+    <End Role="OgrenciRezervasyonDurumu" Type="Self.OgrenciRezervasyonDurumu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RezervasyonDekanOnayDurumu">
+        <PropertyRef Name="onay_id" />
+      </Principal>
+      <Dependent Role="OgrenciRezervasyonDurumu">
+        <PropertyRef Name="rezervasyon_dekan_onay_durumu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OgrenciRezervasyonİliskisi_OgrenciRezervasyonDurumu">
+    <End Role="OgrenciRezervasyonDurumu" Type="Self.OgrenciRezervasyonDurumu" Multiplicity="1" />
+    <End Role="OgrenciRezervasyonİliskisi" Type="Self.OgrenciRezervasyonİliskisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OgrenciRezervasyonDurumu">
+        <PropertyRef Name="rezervasyon_id" />
+      </Principal>
+      <Dependent Role="OgrenciRezervasyonİliskisi">
+        <PropertyRef Name="rezervasyon_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FacultyWorksEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Danisman" EntityType="Self.Danisman" />
+    <EntitySet Name="DepocuTeslimDurumu" EntityType="Self.DepocuTeslimDurumu" />
+    <EntitySet Name="Dersler" EntityType="Self.Dersler" />
+    <EntitySet Name="DigerOgrencilerSecilenDanismanIlıskisi" EntityType="Self.DigerOgrencilerSecilenDanismanIlıskisi" />
+    <EntitySet Name="DigerOgrencilerSecilenDersIlıskisi" EntityType="Self.DigerOgrencilerSecilenDersIlıskisi" />
+    <EntitySet Name="IletisimOgrencisiSecilenDanismanIlıskisi" EntityType="Self.IletisimOgrencisiSecilenDanismanIlıskisi" />
+    <EntitySet Name="IletisimOgrencisiSecilenDersIlıskisi" EntityType="Self.IletisimOgrencisiSecilenDersIlıskisi" />
+    <EntitySet Name="LoginAdmin" EntityType="Self.LoginAdmin" />
+    <EntitySet Name="LoginDean" EntityType="Self.LoginDean" />
+    <EntitySet Name="LoginLecturer" EntityType="Self.LoginLecturer" />
+    <EntitySet Name="LoginStocker" EntityType="Self.LoginStocker" />
+    <EntitySet Name="LoginStudent" EntityType="Self.LoginStudent" />
+    <EntitySet Name="Malzeme" EntityType="Self.Malzeme" />
+    <EntitySet Name="MalzemeDurumu" EntityType="Self.MalzemeDurumu" />
+    <EntitySet Name="MalzemeTipi" EntityType="Self.MalzemeTipi" />
+    <EntitySet Name="Ogrenci" EntityType="Self.Ogrenci" />
+    <EntitySet Name="OgrenciCalismaTipi" EntityType="Self.OgrenciCalismaTipi" />
+    <EntitySet Name="OgrenciCalismaTuru" EntityType="Self.OgrenciCalismaTuru" />
+    <EntitySet Name="OgrenciGrupİlişkisi" EntityType="Self.OgrenciGrupİlişkisi" />
+    <EntitySet Name="OgrenciRezervasyonBilgileri" EntityType="Self.OgrenciRezervasyonBilgileri" />
+    <EntitySet Name="OgrenciRezervasyonDurumu" EntityType="Self.OgrenciRezervasyonDurumu" />
+    <EntitySet Name="OgrenciRezervasyonİliskisi" EntityType="Self.OgrenciRezervasyonİliskisi" />
+    <EntitySet Name="OgrenciSecilenMalzeme" EntityType="Self.OgrenciSecilenMalzeme" />
+    <EntitySet Name="RezervasyonDanismanOnayDurumu" EntityType="Self.RezervasyonDanismanOnayDurumu" />
+    <EntitySet Name="RezervasyonDekanOnayDurumu" EntityType="Self.RezervasyonDekanOnayDurumu" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <AssociationSet Name="FK_IletisimOgrencisiSecilenDanismanIlıskisi_Danisman" Association="Self.FK_IletisimOgrencisiSecilenDanismanIlıskisi_Danisman">
+      <End Role="Danisman" EntitySet="Danisman" />
+      <End Role="IletisimOgrencisiSecilenDanismanIlıskisi" EntitySet="IletisimOgrencisiSecilenDanismanIlıskisi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OgrenciRezervasyonDurumu_DepocuTeslimDurumu" Association="Self.FK_OgrenciRezervasyonDurumu_DepocuTeslimDurumu">
+      <End Role="DepocuTeslimDurumu" EntitySet="DepocuTeslimDurumu" />
+      <End Role="OgrenciRezervasyonDurumu" EntitySet="OgrenciRezervasyonDurumu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IletisimOgrencisiSecilenDersIlıskisi_Dersler" Association="Self.FK_IletisimOgrencisiSecilenDersIlıskisi_Dersler">
+      <End Role="Dersler" EntitySet="Dersler" />
+      <End Role="IletisimOgrencisiSecilenDersIlıskisi" EntitySet="IletisimOgrencisiSecilenDersIlıskisi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DigerOgrencilerSecilenDanismanIlıskisi_OgrenciRezervasyonBilgileri" Association="Self.FK_DigerOgrencilerSecilenDanismanIlıskisi_OgrenciRezervasyonBilgileri">
+      <End Role="OgrenciRezervasyonBilgileri" EntitySet="OgrenciRezervasyonBilgileri" />
+      <End Role="DigerOgrencilerSecilenDanismanIlıskisi" EntitySet="DigerOgrencilerSecilenDanismanIlıskisi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DigerOgrencilerSecilenDersIlıskisi_OgrenciRezervasyonBilgileri" Association="Self.FK_DigerOgrencilerSecilenDersIlıskisi_OgrenciRezervasyonBilgileri">
+      <End Role="OgrenciRezervasyonBilgileri" EntitySet="OgrenciRezervasyonBilgileri" />
+      <End Role="DigerOgrencilerSecilenDersIlıskisi" EntitySet="DigerOgrencilerSecilenDersIlıskisi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IletisimOgrencisiSecilenDanismanIlıskisi_OgrenciRezervasyonBilgileri" Association="Self.FK_IletisimOgrencisiSecilenDanismanIlıskisi_OgrenciRezervasyonBilgileri">
+      <End Role="OgrenciRezervasyonBilgileri" EntitySet="OgrenciRezervasyonBilgileri" />
+      <End Role="IletisimOgrencisiSecilenDanismanIlıskisi" EntitySet="IletisimOgrencisiSecilenDanismanIlıskisi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IletisimOgrencisiSecilenDersIlıskisi_OgrenciRezervasyonBilgileri" Association="Self.FK_IletisimOgrencisiSecilenDersIlıskisi_OgrenciRezervasyonBilgileri">
+      <End Role="OgrenciRezervasyonBilgileri" EntitySet="OgrenciRezervasyonBilgileri" />
+      <End Role="IletisimOgrencisiSecilenDersIlıskisi" EntitySet="IletisimOgrencisiSecilenDersIlıskisi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Malzeme_MalzemeDurumu" Association="Self.FK_Malzeme_MalzemeDurumu">
+      <End Role="MalzemeDurumu" EntitySet="MalzemeDurumu" />
+      <End Role="Malzeme" EntitySet="Malzeme" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Malzeme_MalzemeTipi" Association="Self.FK_Malzeme_MalzemeTipi">
+      <End Role="MalzemeTipi" EntitySet="MalzemeTipi" />
+      <End Role="Malzeme" EntitySet="Malzeme" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Malzeme_OgrenciCalismaTuru" Association="Self.FK_Malzeme_OgrenciCalismaTuru">
+      <End Role="OgrenciCalismaTuru" EntitySet="OgrenciCalismaTuru" />
+      <End Role="Malzeme" EntitySet="Malzeme" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OgrenciSecilenMalzeme_Malzeme" Association="Self.FK_OgrenciSecilenMalzeme_Malzeme">
+      <End Role="Malzeme" EntitySet="Malzeme" />
+      <End Role="OgrenciSecilenMalzeme" EntitySet="OgrenciSecilenMalzeme" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OgrenciSecilenMalzeme_Ogrenci" Association="Self.FK_OgrenciSecilenMalzeme_Ogrenci">
+      <End Role="Ogrenci" EntitySet="Ogrenci" />
+      <End Role="OgrenciSecilenMalzeme" EntitySet="OgrenciSecilenMalzeme" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OgrenciRezervasyonBilgileri_OgrenciCalismaTipi" Association="Self.FK_OgrenciRezervasyonBilgileri_OgrenciCalismaTipi">
+      <End Role="OgrenciCalismaTipi" EntitySet="OgrenciCalismaTipi" />
+      <End Role="OgrenciRezervasyonBilgileri" EntitySet="OgrenciRezervasyonBilgileri" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OgrenciRezervasyonBilgileri_OgrenciCalismaTuru" Association="Self.FK_OgrenciRezervasyonBilgileri_OgrenciCalismaTuru">
+      <End Role="OgrenciCalismaTuru" EntitySet="OgrenciCalismaTuru" />
+      <End Role="OgrenciRezervasyonBilgileri" EntitySet="OgrenciRezervasyonBilgileri" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OgrenciGrupİlişkisi_OgrenciRezervasyonBilgileri" Association="Self.FK_OgrenciGrupİlişkisi_OgrenciRezervasyonBilgileri">
+      <End Role="OgrenciRezervasyonBilgileri" EntitySet="OgrenciRezervasyonBilgileri" />
+      <End Role="OgrenciGrupİlişkisi" EntitySet="OgrenciGrupİlişkisi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OgrenciRezervasyonİliskisi_OgrenciRezervasyonBilgileri" Association="Self.FK_OgrenciRezervasyonİliskisi_OgrenciRezervasyonBilgileri">
+      <End Role="OgrenciRezervasyonBilgileri" EntitySet="OgrenciRezervasyonBilgileri" />
+      <End Role="OgrenciRezervasyonİliskisi" EntitySet="OgrenciRezervasyonİliskisi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OgrenciSecilenMalzeme_OgrenciRezervasyonBilgileri" Association="Self.FK_OgrenciSecilenMalzeme_OgrenciRezervasyonBilgileri">
+      <End Role="OgrenciRezervasyonBilgileri" EntitySet="OgrenciRezervasyonBilgileri" />
+      <End Role="OgrenciSecilenMalzeme" EntitySet="OgrenciSecilenMalzeme" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OgrenciRezervasyonDurumu_RezervasyonDanismanOnayDurumu" Association="Self.FK_OgrenciRezervasyonDurumu_RezervasyonDanismanOnayDurumu">
+      <End Role="RezervasyonDanismanOnayDurumu" EntitySet="RezervasyonDanismanOnayDurumu" />
+      <End Role="OgrenciRezervasyonDurumu" EntitySet="OgrenciRezervasyonDurumu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OgrenciRezervasyonDurumu_RezervasyonDekanOnayDurumu" Association="Self.FK_OgrenciRezervasyonDurumu_RezervasyonDekanOnayDurumu">
+      <End Role="RezervasyonDekanOnayDurumu" EntitySet="RezervasyonDekanOnayDurumu" />
+      <End Role="OgrenciRezervasyonDurumu" EntitySet="OgrenciRezervasyonDurumu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OgrenciRezervasyonİliskisi_OgrenciRezervasyonDurumu" Association="Self.FK_OgrenciRezervasyonİliskisi_OgrenciRezervasyonDurumu">
+      <End Role="OgrenciRezervasyonDurumu" EntitySet="OgrenciRezervasyonDurumu" />
+      <End Role="OgrenciRezervasyonİliskisi" EntitySet="OgrenciRezervasyonİliskisi" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(FacultyWorksModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(FacultyWorksModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>
